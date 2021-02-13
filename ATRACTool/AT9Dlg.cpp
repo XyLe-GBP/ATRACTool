@@ -113,66 +113,72 @@ BOOL AT9Dlg::OnInitDialog()
 	m_hBitrate.AddString(_T("144"));
 	m_hBitrate.AddString(_T("168"));
 
-	if (bitrate == 0) {
+	switch (bitrate)
+	{
+	case 0:
 		BITRATE = _T(" -br 36");
 		m_hBitrate.SetCurSel(0);
-	}
-	else if (bitrate == 1) {
+		break;
+	case 1:
 		BITRATE = _T(" -br 48");
 		m_hBitrate.SetCurSel(1);
-	}
-	else if (bitrate == 2) {
+		break;
+	case 2:
 		BITRATE = _T(" -br 60");
 		m_hBitrate.SetCurSel(2);
-	}
-	else if (bitrate == 3) {
+		break;
+	case 3:
 		BITRATE = _T(" -br 72");
 		m_hBitrate.SetCurSel(3);
-	}
-	else if (bitrate == 4) {
+		break;
+	case 4:
 		BITRATE = _T(" -br 84");
 		m_hBitrate.SetCurSel(4);
-	}
-	else if (bitrate == 5) {
+		break;
+	case 5:
 		BITRATE = _T(" -br 96");
 		m_hBitrate.SetCurSel(5);
-	}
-	else if (bitrate == 6) {
+		break;
+	case 6:
 		BITRATE = _T(" -br 120");
 		m_hBitrate.SetCurSel(6);
-	}
-	else if (bitrate == 7) {
+		break;
+	case 7:
 		BITRATE = _T(" -br 144");
 		m_hBitrate.SetCurSel(7);
-	}
-	else if (bitrate == 8) {
+		break;
+	case 8:
 		BITRATE = _T(" -br 168");
 		m_hBitrate.SetCurSel(8);
-	}
-	else {
+		break;
+	default:
 		BITRATE = _T(" -br 168");
 		m_hBitrate.SetCurSel(8);
+		break;
 	}
 
 	m_hSampling.AddString(_T("12000"));
 	m_hSampling.AddString(_T("24000"));
 	m_hSampling.AddString(_T("48000"));
 
-	if (sampling == 0) {
+	switch (sampling)
+	{
+	case 0:
 		SAMPLING = _T(" -fs 12000");
 		m_hSampling.SetCurSel(0);
-	}
-	else if (sampling == 1) {
+		break;
+	case 1:
 		SAMPLING = _T(" -fs 24000");
 		m_hSampling.SetCurSel(1);
-	}
-	else if (sampling == 2) {
+		break;
+	case 2:
 		SAMPLING = _T(" -fs 48000");
 		m_hSampling.SetCurSel(2);
-	}
-	else {
+		break;
+	default:
 		SAMPLING = _T(" -fs 48000");
 		m_hSampling.SetCurSel(2);
+		break;
 	}
 
 	CButton* CHECK_LOOPPOINT = (CButton*)GetDlgItem(IDC_CHECK_LOOPPOINT);
@@ -193,8 +199,9 @@ BOOL AT9Dlg::OnInitDialog()
 	CEdit* EDIT_ISBAND = (CEdit*)GetDlgItem(IDC_EDIT_ISBAND);
 	CComboBox* COMBO_ENCMODE = (CComboBox*)GetDlgItem(IDC_COMBO_ENCMODE);
 	
-
-	if (chkLoop == 0) {
+	switch (chkLoop)
+	{
+	case 0:
 		CHECK_LOOPPOINT->SetCheck(BST_UNCHECKED);
 		EDIT_LOOPSTART->SetWindowText(NULL);
 		EDIT_LOOPEND->SetWindowText(NULL);
@@ -203,8 +210,8 @@ BOOL AT9Dlg::OnInitDialog()
 		LOOPFLAG = _T("");
 		LOOPSTART = _T("");
 		LOOPEND = _T("");
-	}
-	else if (chkLoop == 1) {
+		break;
+	case 1:
 		CHECK_LOOPPOINT->SetCheck(BST_CHECKED);
 		LOOPFLAG = _T(" -loop");
 		LOOPSTART = _T(" ");
@@ -215,8 +222,8 @@ BOOL AT9Dlg::OnInitDialog()
 		EDIT_LOOPEND->SetWindowText(Loopend);
 		EDIT_LOOPSTART->EnableWindow(TRUE);
 		EDIT_LOOPEND->EnableWindow(TRUE);
-	}
-	else {
+		break;
+	default:
 		CHECK_LOOPPOINT->SetCheck(BST_UNCHECKED);
 		EDIT_LOOPSTART->SetWindowText(NULL);
 		EDIT_LOOPEND->SetWindowText(NULL);
@@ -225,53 +232,62 @@ BOOL AT9Dlg::OnInitDialog()
 		LOOPFLAG = _T("");
 		LOOPSTART = _T("");
 		LOOPEND = _T("");
+		break;
 	}
 
-	if (chkWhole == 0) {
+	switch (chkWhole)
+	{
+	case 0:
 		CHECK_WHOLELOOP->SetCheck(BST_UNCHECKED);
 		WHOLELOOPFLAG = _T("");
-	}
-	else if (chkWhole == 1) {
+		break;
+	case 1:
 		CHECK_WHOLELOOP->SetCheck(BST_CHECKED);
 		WHOLELOOPFLAG = _T(" -wholeloop");
-	}
-	else {
+		break;
+	default:
 		CHECK_WHOLELOOP->SetCheck(BST_UNCHECKED);
 		WHOLELOOPFLAG = _T("");
+		break;
 	}
 
-	if (chkLooppart == 0) {
+	switch (chkLooppart)
+	{
+	case 0:
 		CHECK_PARTLOOP->SetCheck(BST_UNCHECKED);
 		EDIT_LOOPPART->SetWindowText(NULL);
 		EDIT_LOOPPART->EnableWindow(FALSE);
 		LOOPPARTFLAG = _T("");
 		LOOPPART = _T("");
-	}
-	else if (chkLooppart == 1) {
+		break;
+	case 1:
 		CHECK_PARTLOOP->SetCheck(BST_CHECKED);
 		LOOPPARTFLAG = _T(" -repeat");
 		LOOPPART = _T(" ");
 		LOOPPART += Looppart;
 		EDIT_LOOPPART->SetWindowText(Looppart);
 		EDIT_LOOPPART->EnableWindow(TRUE);
-	}
-	else {
+		break;
+	default:
 		CHECK_PARTLOOP->SetCheck(BST_UNCHECKED);
 		EDIT_LOOPPART->SetWindowText(NULL);
 		EDIT_LOOPPART->EnableWindow(FALSE);
 		LOOPPARTFLAG = _T("");
 		LOOPPART = _T("");
+		break;
 	}
 
-	if (chkLooplist == 0) {
+	switch (chkLooplist)
+	{
+	case 0:
 		CHECK_LOOPLIST->SetCheck(BST_UNCHECKED);
 		EDIT_LOOPLIST->SetWindowText(NULL);
 		EDIT_LOOPLIST->EnableWindow(FALSE);
 		BUTTON_LOOPLIST->EnableWindow(FALSE);
 		LOOPLISTFLAG = _T("");
 		LOOPLIST = _T("");
-	}
-	else if (chkLooplist == 1) {
+		break;
+	case 1:
 		CHECK_LOOPLIST->SetCheck(BST_CHECKED);
 		LOOPLISTFLAG = _T(" -looplist");
 		LOOPLIST = _T(" ");
@@ -279,17 +295,20 @@ BOOL AT9Dlg::OnInitDialog()
 		EDIT_LOOPLIST->SetWindowText(Looplist);
 		EDIT_LOOPLIST->EnableWindow(TRUE);
 		BUTTON_LOOPLIST->EnableWindow(TRUE);
-	}
-	else {
+		break;
+	default:
 		CHECK_LOOPLIST->SetCheck(BST_UNCHECKED);
 		EDIT_LOOPLIST->SetWindowText(NULL);
 		EDIT_LOOPLIST->EnableWindow(FALSE);
 		BUTTON_LOOPLIST->EnableWindow(FALSE);
 		LOOPLISTFLAG = _T("");
 		LOOPLIST = _T("");
+		break;
 	}
 
-	if (chkAdvanced == 0) {
+	switch (chkAdvanced)
+	{
+	case 0:
 		CHECK_ADVANCED->SetCheck(BST_UNCHECKED);
 		RADIO_SUPENCON->EnableWindow(FALSE);
 		RADIO_SUPENCOFF->EnableWindow(FALSE);
@@ -300,16 +319,16 @@ BOOL AT9Dlg::OnInitDialog()
 		EDIT_NBANDS->EnableWindow(FALSE);
 		EDIT_ISBAND->EnableWindow(FALSE);
 		COMBO_ENCMODE->EnableWindow(FALSE);
-	}
-	else if (chkAdvanced == 1) {
+		break;
+	case 1:
 		CHECK_ADVANCED->SetCheck(BST_CHECKED);
 		RADIO_SUPENCON->EnableWindow(TRUE);
 		RADIO_SUPENCOFF->EnableWindow(TRUE);
 		CHECK_DUALENC->EnableWindow(TRUE);
 		CHECK_NBAND->EnableWindow(TRUE);
 		COMBO_ENCMODE->EnableWindow(TRUE);
-	}
-	else {
+		break;
+	default:
 		CHECK_ADVANCED->SetCheck(BST_UNCHECKED);
 		RADIO_SUPENCON->EnableWindow(FALSE);
 		RADIO_SUPENCOFF->EnableWindow(FALSE);
@@ -320,35 +339,44 @@ BOOL AT9Dlg::OnInitDialog()
 		EDIT_NBANDS->EnableWindow(FALSE);
 		EDIT_ISBAND->EnableWindow(FALSE);
 		COMBO_ENCMODE->EnableWindow(FALSE);
+		break;
 	}
 
-	if (chkSupenc == 0) {
+	switch (chkSupenc)
+	{
+	case 0:
 		CheckRadioButton(IDC_RADIO_SUPFRAME_ON, IDC_RADIO_SUPFRAME_OFF, IDC_RADIO_SUPFRAME_OFF);
 		SUPFRAMEFLAG = _T(" -supframeoff");
-	}
-	else if (chkSupenc == 1) {
+		break;
+	case 1:
 		CheckRadioButton(IDC_RADIO_SUPFRAME_ON, IDC_RADIO_SUPFRAME_OFF, IDC_RADIO_SUPFRAME_ON);
 		SUPFRAMEFLAG = _T(" -supframeon");
-	}
-	else {
+		break;
+	default:
 		CheckRadioButton(IDC_RADIO_SUPFRAME_ON, IDC_RADIO_SUPFRAME_OFF, IDC_RADIO_SUPFRAME_OFF);
 		SUPFRAMEFLAG = _T("");
+		break;
 	}
 
-	if (chkDualenc == 0) {
+	switch (chkDualenc)
+	{
+	case 0:
 		CHECK_DUALENC->SetCheck(BST_UNCHECKED);
 		DUALFLAG = _T("");
-	}
-	else if (chkDualenc == 1) {
+		break;
+	case 1:
 		CHECK_DUALENC->SetCheck(BST_CHECKED);
 		DUALFLAG = _T(" -dual");
-	}
-	else {
+		break;
+	default:
 		CHECK_DUALENC->SetCheck(BST_UNCHECKED);
 		DUALFLAG = _T("");
+		break;
 	}
 
-	if (chkBand == 0) {
+	switch (chkBand)
+	{
+	case 0:
 		CHECK_NBAND->SetCheck(BST_UNCHECKED);
 		EDIT_NBANDS->SetWindowText(NULL);
 		EDIT_ISBAND->SetWindowText(NULL);
@@ -358,8 +386,8 @@ BOOL AT9Dlg::OnInitDialog()
 		NBANDS = _T("");
 		ISBANDFLAG = _T("");
 		ISBAND = _T("");
-	}
-	else if (chkBand == 1) {
+		break;
+	case 1:
 		CHECK_NBAND->SetCheck(BST_CHECKED);
 		NBANDSFLAG = _T(" -nbands");
 		NBANDS = _T(" ");
@@ -371,8 +399,8 @@ BOOL AT9Dlg::OnInitDialog()
 		EDIT_ISBAND->SetWindowText(Isband);
 		EDIT_NBANDS->EnableWindow(TRUE);
 		EDIT_ISBAND->EnableWindow(TRUE);
-	}
-	else {
+		break;
+	default:
 		CHECK_NBAND->SetCheck(BST_UNCHECKED);
 		EDIT_NBANDS->SetWindowText(NULL);
 		EDIT_ISBAND->SetWindowText(NULL);
@@ -382,9 +410,12 @@ BOOL AT9Dlg::OnInitDialog()
 		NBANDS = _T("");
 		ISBANDFLAG = _T("");
 		ISBAND = _T("");
+		break;
 	}
 
-	if (encmode == 0) {
+	switch (encmode)
+	{
+	case 0:
 		m_hEncodeMode.AddString(_T("0"));
 		m_hEncodeMode.AddString(_T("1"));
 		m_hEncodeMode.AddString(_T("2"));
@@ -394,8 +425,8 @@ BOOL AT9Dlg::OnInitDialog()
 		m_hEncodeMode.SetCurSel(0);
 		GRADMODEFLAG = _T(" -gradmode");
 		GRADMODE = _T(" 0");
-	}
-	else if (encmode == 1) {
+		break;
+	case 1:
 		m_hEncodeMode.AddString(_T("0"));
 		m_hEncodeMode.AddString(_T("1"));
 		m_hEncodeMode.AddString(_T("2"));
@@ -405,8 +436,8 @@ BOOL AT9Dlg::OnInitDialog()
 		m_hEncodeMode.SetCurSel(1);
 		GRADMODEFLAG = _T(" -gradmode");
 		GRADMODE = _T(" 1");
-	}
-	else if (encmode == 2) {
+		break;
+	case 2:
 		m_hEncodeMode.AddString(_T("0"));
 		m_hEncodeMode.AddString(_T("1"));
 		m_hEncodeMode.AddString(_T("2"));
@@ -416,8 +447,8 @@ BOOL AT9Dlg::OnInitDialog()
 		m_hEncodeMode.SetCurSel(2);
 		GRADMODEFLAG = _T(" -gradmode");
 		GRADMODE = _T(" 2");
-	}
-	else if (encmode == 3) {
+		break;
+	case 3:
 		m_hEncodeMode.AddString(_T("0"));
 		m_hEncodeMode.AddString(_T("1"));
 		m_hEncodeMode.AddString(_T("2"));
@@ -427,8 +458,8 @@ BOOL AT9Dlg::OnInitDialog()
 		m_hEncodeMode.SetCurSel(3);
 		GRADMODEFLAG = _T(" -gradmode");
 		GRADMODE = _T(" 3");
-	}
-	else if (encmode == 4) {
+		break;
+	case 4:
 		m_hEncodeMode.AddString(_T("0"));
 		m_hEncodeMode.AddString(_T("1"));
 		m_hEncodeMode.AddString(_T("2"));
@@ -438,8 +469,8 @@ BOOL AT9Dlg::OnInitDialog()
 		m_hEncodeMode.SetCurSel(4);
 		GRADMODEFLAG = _T(" -gradmode");
 		GRADMODE = _T(" 4");
-	}
-	else if (encmode == 5) {
+		break;
+	case 5:
 		m_hEncodeMode.AddString(_T("0"));
 		m_hEncodeMode.AddString(_T("1"));
 		m_hEncodeMode.AddString(_T("2"));
@@ -449,12 +480,13 @@ BOOL AT9Dlg::OnInitDialog()
 		m_hEncodeMode.SetCurSel(5);
 		GRADMODEFLAG = _T("");
 		GRADMODE = _T("");
-	}
-	else {
+		break;
+	default:
 		m_hEncodeMode.ResetContent();
 		m_hEncodeMode.SetCurSel(0);
 		GRADMODEFLAG = _T("");
 		GRADMODE = _T("");
+		break;
 	}
 
 	CEdit* EDIT_PARAM = (CEdit*)GetDlgItem(IDC_EDIT_CMD);
@@ -503,18 +535,18 @@ void AT9Dlg::OnBnClickedOk()
 
 	if (CHECK_LOOPPOINT->GetCheck() == BST_CHECKED) {
 		if (EDIT_LOOPSTART->GetWindowTextLength() < 1) {
-			MessageBox(_T("LoopStartの値が無効です。"), _T("エラー"), MB_ICONERROR | MB_OK);
+			MessageBox(_T("LoopStartのサンプル値が無効です。"), _T("エラー"), MB_ICONERROR | MB_OK);
 			return;
 		}
 		if (EDIT_LOOPEND->GetWindowTextLength() < 1) {
-			MessageBox(_T("LoopEndの値が無効です。"), _T("エラー"), MB_ICONERROR | MB_OK);
+			MessageBox(_T("LoopEndのサンプル値が無効です。"), _T("エラー"), MB_ICONERROR | MB_OK);
 			return;
 		}
 	}
 
 	if (CHECK_PARTLOOP->GetCheck() == BST_CHECKED) {
 		if (EDIT_LOOPPART->GetWindowTextLength() == 0) {
-			MessageBox(_T("LoopPartの値が無効です。"), _T("エラー"), MB_ICONERROR | MB_OK);
+			MessageBox(_T("LoopPartの回数値が無効です。"), _T("エラー"), MB_ICONERROR | MB_OK);
 			return;
 		}
 	}
@@ -679,36 +711,40 @@ void AT9Dlg::OnCbnSelchangeComboBitrate()
 {
 	// TODO: ここにコントロール通知ハンドラー コードを追加します。
 
-	if (m_hBitrate.GetCurSel() == 0) { // 36k
+	switch (m_hBitrate.GetCurSel())
+	{
+	case 0:
 		BITRATE = _T(" -br 36");
-	}
-	else if (m_hBitrate.GetCurSel() == 1) { // 48k
+		break;
+	case 1:
 		BITRATE = _T(" -br 48");
-	}
-	else if (m_hBitrate.GetCurSel() == 2) { // 60k
+		break;
+	case 2:
 		BITRATE = _T(" -br 60");
-	}
-	else if (m_hBitrate.GetCurSel() == 3) { // 72k
+		break;
+	case 3:
 		BITRATE = _T(" -br 72");
-	}
-	else if (m_hBitrate.GetCurSel() == 4) { // 84k
+		break;
+	case 4:
 		BITRATE = _T(" -br 84");
-	}
-	else if (m_hBitrate.GetCurSel() == 5) { // 96k
+		break;
+	case 5:
 		BITRATE = _T(" -br 96");
-	}
-	else if (m_hBitrate.GetCurSel() == 6) { // 120k
+		break;
+	case 6:
 		BITRATE = _T(" -br 120");
-	}
-	else if (m_hBitrate.GetCurSel() == 7) { // 144k
+		break;
+	case 7:
 		BITRATE = _T(" -br 144");
-	}
-	else if (m_hBitrate.GetCurSel() == 8) { // 168k
+		break;
+	case 8:
 		BITRATE = _T(" -br 168");
-	}
-	else { // Error
+		break;
+	default:
 		BITRATE = _T("");
+		break;
 	}
+
 	CEdit* EDIT_PARAM = (CEdit*)GetDlgItem(IDC_EDIT_CMD);
 	EDIT_PARAM->SetWindowText(CMDPARAM = TOOL + BITRATE + SAMPLING + LOOPFLAG + LOOPSTART + LOOPEND + WHOLELOOPFLAG + LOOPPARTFLAG + LOOPPART + LOOPLISTFLAG + LOOPLIST + SUPFRAMEFLAG + DUALFLAG + NBANDSFLAG + NBANDS + ISBANDFLAG + ISBAND + GRADMODEFLAG + GRADMODE + _T(" $InFile $OutFile"));
 	return;
@@ -1168,39 +1204,43 @@ void AT9Dlg::OnEnChangeEditIsband()
 void AT9Dlg::OnCbnSelchangeComboEncmode()
 {
 	// TODO: ここにコントロール通知ハンドラー コードを追加します。
-	if (m_hEncodeMode.GetCurSel() == 0) {
+	switch (m_hEncodeMode.GetCurSel())
+	{
+	case 0:
 		GRADMODEFLAG = _T(" -gradmode");
 		GRADMODE = _T(" 0");
 		OutputDebugString(_T("Encoding mode is: 0.\ngradient of the quantization noise.\n"));
-	}
-	else if (m_hEncodeMode.GetCurSel() == 1) {
+		break;
+	case 1:
 		GRADMODEFLAG = _T(" -gradmode");
 		GRADMODE = _T(" 1");
 		OutputDebugString(_T("Encoding mode is: 1.\ngradient of the quantization noise.\n"));
-	}
-	else if (m_hEncodeMode.GetCurSel() == 2) {
+		break;
+	case 2:
 		GRADMODEFLAG = _T(" -gradmode");
 		GRADMODE = _T(" 2");
 		OutputDebugString(_T("Encoding mode is: 2.\ngradient of the quantization noise.\n"));
-	}
-	else if (m_hEncodeMode.GetCurSel() == 3) {
+		break;
+	case 3:
 		GRADMODEFLAG = _T(" -gradmode");
 		GRADMODE = _T(" 3");
 		OutputDebugString(_T("Encoding mode is: 3.\ngradient of the quantization noise.\n"));
-	}
-	else if (m_hEncodeMode.GetCurSel() == 4) {
+		break;
+	case 4:
 		GRADMODEFLAG = _T(" -gradmode");
 		GRADMODE = _T(" 4");
 		OutputDebugString(_T("Encoding mode is: 4.\n0-3 is selected automatically.\nSpecify the small number in case of tone sound source.\nOr specify the high number in case of noisy sound source.\n"));
-	}
-	else if (m_hEncodeMode.GetCurSel() == 5) {
+		break;
+	case 5:
 		GRADMODEFLAG = _T("");
 		GRADMODE = _T("");
-	}
-	else {
+		break;
+	default:
 		GRADMODEFLAG = _T("");
 		GRADMODE = _T("");
+		break;
 	}
+
 	CEdit* EDIT_PARAM = (CEdit*)GetDlgItem(IDC_EDIT_CMD);
 	EDIT_PARAM->SetWindowText(CMDPARAM = TOOL + BITRATE + SAMPLING + LOOPFLAG + LOOPSTART + LOOPEND + WHOLELOOPFLAG + LOOPPARTFLAG + LOOPPART + LOOPLISTFLAG + LOOPLIST + SUPFRAMEFLAG + DUALFLAG + NBANDSFLAG + NBANDS + ISBANDFLAG + ISBAND + GRADMODEFLAG + GRADMODE + _T(" $InFile $OutFile"));
 	return;

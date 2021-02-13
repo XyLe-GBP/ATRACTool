@@ -86,110 +86,113 @@ BOOL AT3Dlg::OnInitDialog()
 	CButton* RADIO1 = (CButton*)GetDlgItem(IDC_RADIO_CH1);
 	CButton* RADIO2 = (CButton*)GetDlgItem(IDC_RADIO_CH2);
 
-	if (bitrate == 0) {
+	switch (bitrate)
+	{
+	case 0:
 		m_hBitrate.SetCurSel(0);
 		CheckRadioButton(IDC_RADIO_CH1, IDC_RADIO_CH2, IDC_RADIO_CH1);
 		RADIO1->EnableWindow(TRUE);
 		RADIO2->EnableWindow(FALSE);
 		BITRATE = _T(" -br 32");
-	}
-	else if (bitrate == 1) {
+		break;
+	case 1:
 		m_hBitrate.SetCurSel(1);
 		CheckRadioButton(IDC_RADIO_CH1, IDC_RADIO_CH2, IDC_RADIO_CH2);
 		RADIO1->EnableWindow(TRUE);
 		RADIO2->EnableWindow(TRUE);
 		BITRATE = _T(" -br 48");
-	}
-	else if (bitrate == 2) {
+		break;
+	case 2:
 		m_hBitrate.SetCurSel(2);
 		CheckRadioButton(IDC_RADIO_CH1, IDC_RADIO_CH2, IDC_RADIO_CH1);
 		RADIO1->EnableWindow(TRUE);
 		RADIO2->EnableWindow(FALSE);
 		BITRATE = _T(" -br 52");
-	}
-	else if (bitrate == 3) {
+		break;
+	case 3:
 		m_hBitrate.SetCurSel(3);
 		CheckRadioButton(IDC_RADIO_CH1, IDC_RADIO_CH2, IDC_RADIO_CH2);
 		RADIO1->EnableWindow(TRUE);
 		RADIO2->EnableWindow(TRUE);
 		BITRATE = _T(" -br 64");
-	}
-	else if (bitrate == 4) {
+		break;
+	case 4:
 		m_hBitrate.SetCurSel(4);
 		CheckRadioButton(IDC_RADIO_CH1, IDC_RADIO_CH2, IDC_RADIO_CH2);
 		RADIO1->EnableWindow(TRUE);
 		RADIO2->EnableWindow(TRUE);
 		BITRATE = _T(" -br 66");
-	}
-	else if (bitrate == 5) {
+		break;
+	case 5:
 		m_hBitrate.SetCurSel(5);
 		CheckRadioButton(IDC_RADIO_CH1, IDC_RADIO_CH2, IDC_RADIO_CH2);
 		RADIO1->EnableWindow(TRUE);
 		RADIO2->EnableWindow(TRUE);
 		BITRATE = _T(" -br 96");
-	}
-	else if (bitrate == 6) {
+		break;
+	case 6:
 		m_hBitrate.SetCurSel(6);
 		CheckRadioButton(IDC_RADIO_CH1, IDC_RADIO_CH2, IDC_RADIO_CH2);
 		RADIO1->EnableWindow(FALSE);
 		RADIO2->EnableWindow(TRUE);
 		BITRATE = _T(" -br 105");
-	}
-	else if (bitrate == 7) {
+		break;
+	case 7:
 		m_hBitrate.SetCurSel(7);
 		CheckRadioButton(IDC_RADIO_CH1, IDC_RADIO_CH2, IDC_RADIO_CH2);
 		RADIO1->EnableWindow(TRUE);
 		RADIO2->EnableWindow(TRUE);
 		BITRATE = _T(" -br 128");
-	}
-	else if (bitrate == 8) {
+		break;
+	case 8:
 		m_hBitrate.SetCurSel(8);
 		CheckRadioButton(IDC_RADIO_CH1, IDC_RADIO_CH2, IDC_RADIO_CH2);
 		RADIO1->EnableWindow(FALSE);
 		RADIO2->EnableWindow(TRUE);
 		BITRATE = _T(" -br 132");
-	}
-	else if (bitrate == 9) {
+		break;
+	case 9:
 		m_hBitrate.SetCurSel(9);
 		CheckRadioButton(IDC_RADIO_CH1, IDC_RADIO_CH2, IDC_RADIO_CH2);
 		RADIO1->EnableWindow(FALSE);
 		RADIO2->EnableWindow(TRUE);
 		BITRATE = _T(" -br 160");
-	}
-	else if (bitrate == 10) {
+		break;
+	case 10:
 		m_hBitrate.SetCurSel(10);
 		CheckRadioButton(IDC_RADIO_CH1, IDC_RADIO_CH2, IDC_RADIO_CH2);
 		RADIO1->EnableWindow(FALSE);
 		RADIO2->EnableWindow(TRUE);
 		BITRATE = _T(" -br 192");
-	}
-	else if (bitrate == 11) {
+		break;
+	case 11:
 		m_hBitrate.SetCurSel(11);
 		CheckRadioButton(IDC_RADIO_CH1, IDC_RADIO_CH2, IDC_RADIO_CH2);
 		RADIO1->EnableWindow(FALSE);
 		RADIO2->EnableWindow(TRUE);
 		BITRATE = _T(" -br 256");
-	}
-	else if (bitrate == 12) {
+		break;
+	case 12:
 		m_hBitrate.SetCurSel(12);
 		CheckRadioButton(IDC_RADIO_CH1, IDC_RADIO_CH2, IDC_RADIO_CH2);
 		RADIO1->EnableWindow(FALSE);
 		RADIO2->EnableWindow(TRUE);
 		BITRATE = _T(" -br 320");
-	}
-	else if (bitrate == 13) {
+		break;
+	case 13:
 		m_hBitrate.SetCurSel(13);
 		CheckRadioButton(IDC_RADIO_CH1, IDC_RADIO_CH2, IDC_RADIO_CH2);
 		RADIO1->EnableWindow(FALSE);
 		RADIO2->EnableWindow(TRUE);
 		BITRATE = _T(" -br 352");
-	}
-	else {
+		break;
+	default:
 		m_hBitrate.SetCurSel(11);
 		CheckRadioButton(IDC_RADIO_CH1, IDC_RADIO_CH2, IDC_RADIO_CH2);
 		RADIO1->EnableWindow(FALSE);
 		RADIO2->EnableWindow(TRUE);
 		BITRATE = _T(" -br 256");
+		break;
 	}
 
 	CButton* CHECK_LOOPPOINT = (CButton*)GetDlgItem(IDC_CHECK_LOOPPOINT);
@@ -295,18 +298,18 @@ void AT3Dlg::OnBnClickedOk()
 
 	if (CHECK_LOOPPOINT->GetCheck() == BST_CHECKED) {
 		if (EDIT_LOOPSTART->GetWindowTextLength() < 1) {
-			MessageBox(_T("LoopStartの値が無効です。"), _T("エラー"), MB_ICONERROR | MB_OK);
+			MessageBox(_T("LoopStartのサンプル値が無効です。"), _T("エラー"), MB_ICONERROR | MB_OK);
 			return;
 		}
 		if (EDIT_LOOPEND->GetWindowTextLength() < 1) {
-			MessageBox(_T("LoopEndの値が無効です。"), _T("エラー"), MB_ICONERROR | MB_OK);
+			MessageBox(_T("LoopEndのサンプル値が無効です。"), _T("エラー"), MB_ICONERROR | MB_OK);
 			return;
 		}
 	}
 
 	if (CHECK_PARTLOOP->GetCheck() == BST_CHECKED) {
 		if (EDIT_LOOPPART->GetWindowTextLength() == 0) {
-			MessageBox(_T("LoopPartの値が無効です。"), _T("エラー"), MB_ICONERROR | MB_OK);
+			MessageBox(_T("LoopPartの回数値が無効です。"), _T("エラー"), MB_ICONERROR | MB_OK);
 			return;
 		}
 	}
@@ -385,110 +388,115 @@ void AT3Dlg::OnCbnSelchangeComboBitrate()
 	CComboBox* BIT = (CComboBox*)GetDlgItem(IDC_COMBO_BITRATE);
 	CButton* RADIO1 = (CButton*)GetDlgItem(IDC_RADIO_CH1);
 	CButton* RADIO2 = (CButton*)GetDlgItem(IDC_RADIO_CH2);
-	if (BIT->GetCurSel() == 0) { // 32k
+
+	switch (BIT->GetCurSel())
+	{
+	case 0:
 		CheckRadioButton(IDC_RADIO_CH1, IDC_RADIO_CH2, IDC_RADIO_CH1);
 		RADIO1->EnableWindow(TRUE);
 		RADIO2->EnableWindow(FALSE);
 		BITRATE = _T(" -br 32");
 		OutputDebugString(_T("Set bitrate: 32[kbps]\n"));
-	}
-	else if (BIT->GetCurSel() == 1) { // 48k
+		break;
+	case 1:
 		CheckRadioButton(IDC_RADIO_CH1, IDC_RADIO_CH2, IDC_RADIO_CH2);
 		RADIO1->EnableWindow(TRUE);
 		RADIO2->EnableWindow(TRUE);
 		BITRATE = _T(" -br 48");
 		OutputDebugString(_T("Set bitrate: 48[kbps]\n"));
-	}
-	else if (BIT->GetCurSel() == 2) { // 52k
+		break;
+	case 2:
 		CheckRadioButton(IDC_RADIO_CH1, IDC_RADIO_CH2, IDC_RADIO_CH1);
 		RADIO1->EnableWindow(TRUE);
 		RADIO2->EnableWindow(FALSE);
 		BITRATE = _T(" -br 52");
 		OutputDebugString(_T("Set bitrate: 52[kbps]\n"));
-	}
-	else if (BIT->GetCurSel() == 3) { // 64k
+		break;
+	case 3:
 		CheckRadioButton(IDC_RADIO_CH1, IDC_RADIO_CH2, IDC_RADIO_CH2);
 		RADIO1->EnableWindow(TRUE);
 		RADIO2->EnableWindow(TRUE);
 		BITRATE = _T(" -br 64");
 		OutputDebugString(_T("Set bitrate: 64[kbps]\n"));
-	}
-	else if (BIT->GetCurSel() == 4) { // 66k
+		break;
+	case 4:
 		CheckRadioButton(IDC_RADIO_CH1, IDC_RADIO_CH2, IDC_RADIO_CH2);
 		RADIO1->EnableWindow(TRUE);
 		RADIO2->EnableWindow(TRUE);
 		BITRATE = _T(" -br 66");
 		OutputDebugString(_T("Set bitrate: 66[kbps]\n"));
-	}
-	else if (BIT->GetCurSel() == 5) { // 96k
+		break;
+	case 5:
 		CheckRadioButton(IDC_RADIO_CH1, IDC_RADIO_CH2, IDC_RADIO_CH2);
 		RADIO1->EnableWindow(TRUE);
 		RADIO2->EnableWindow(TRUE);
 		BITRATE = _T(" -br 96");
 		OutputDebugString(_T("Set bitrate: 96[kbps]\n"));
-	}
-	else if (BIT->GetCurSel() == 6) { // 105k
+		break;
+	case 6:
 		CheckRadioButton(IDC_RADIO_CH1, IDC_RADIO_CH2, IDC_RADIO_CH2);
 		RADIO1->EnableWindow(FALSE);
 		RADIO2->EnableWindow(TRUE);
 		BITRATE = _T(" -br 105");
 		OutputDebugString(_T("Set bitrate: 105[kbps]\n"));
-	}
-	else if (BIT->GetCurSel() == 7) { // 128k
+		break;
+	case 7:
 		CheckRadioButton(IDC_RADIO_CH1, IDC_RADIO_CH2, IDC_RADIO_CH2);
 		RADIO1->EnableWindow(TRUE);
 		RADIO2->EnableWindow(TRUE);
 		BITRATE = _T(" -br 128");
 		OutputDebugString(_T("Set bitrate: 128[kbps]\n"));
-	}
-	else if (BIT->GetCurSel() == 8) { // 132k
+		break;
+	case 8:
 		CheckRadioButton(IDC_RADIO_CH1, IDC_RADIO_CH2, IDC_RADIO_CH2);
 		RADIO1->EnableWindow(FALSE);
 		RADIO2->EnableWindow(TRUE);
 		BITRATE = _T(" -br 132");
 		OutputDebugString(_T("Set bitrate: 132[kbps]\n"));
-	}
-	else if (BIT->GetCurSel() == 9) { // 160k
+		break;
+	case 9:
 		CheckRadioButton(IDC_RADIO_CH1, IDC_RADIO_CH2, IDC_RADIO_CH2);
 		RADIO1->EnableWindow(FALSE);
 		RADIO2->EnableWindow(TRUE);
 		BITRATE = _T(" -br 160");
 		OutputDebugString(_T("Set bitrate: 160[kbps]\n"));
-	}
-	else if (BIT->GetCurSel() == 10) { // 192k
+		break;
+	case 10:
 		CheckRadioButton(IDC_RADIO_CH1, IDC_RADIO_CH2, IDC_RADIO_CH2);
 		RADIO1->EnableWindow(FALSE);
 		RADIO2->EnableWindow(TRUE);
 		BITRATE = _T(" -br 192");
 		OutputDebugString(_T("Set bitrate: 192[kbps]\n"));
-	}
-	else if (BIT->GetCurSel() == 11) { // 256k
+		break;
+	case 11:
 		CheckRadioButton(IDC_RADIO_CH1, IDC_RADIO_CH2, IDC_RADIO_CH2);
 		RADIO1->EnableWindow(FALSE);
 		RADIO2->EnableWindow(TRUE);
 		BITRATE = _T(" -br 256");
 		OutputDebugString(_T("Set bitrate: 256[kbps]\n"));
-	}
-	else if (BIT->GetCurSel() == 12) { // 320k
+		break;
+	case 12:
 		CheckRadioButton(IDC_RADIO_CH1, IDC_RADIO_CH2, IDC_RADIO_CH2);
 		RADIO1->EnableWindow(FALSE);
 		RADIO2->EnableWindow(TRUE);
 		BITRATE = _T(" -br 320");
 		OutputDebugString(_T("Set bitrate: 320[kbps]\n"));
-	}
-	else if (BIT->GetCurSel() == 13) { // 352k
+		break;
+	case 13:
 		CheckRadioButton(IDC_RADIO_CH1, IDC_RADIO_CH2, IDC_RADIO_CH2);
 		RADIO1->EnableWindow(FALSE);
 		RADIO2->EnableWindow(TRUE);
 		BITRATE = _T(" -br 352");
 		OutputDebugString(_T("Set bitrate: 352[kbps]\n"));
-	}
-	else { // Error
+		break;
+	default:
 		RADIO1->EnableWindow(FALSE);
 		RADIO2->EnableWindow(FALSE);
 		BITRATE = _T("");
 		OutputDebugString(_T("Set bitrate: exception occured.\n"));
+		break;
 	}
+
 	CEdit* EDIT_PARAM = (CEdit*)GetDlgItem(IDC_EDIT3);
 	EDIT_PARAM->SetWindowText(CMDPARAM = TOOL + BITRATE + LOOPFLAG + LOOPSTART + LOOPEND + WHOLELOOPFLAG + LOOPPARTFLAG + LOOPPART + _T(" $InFile $OutFile"));
 	return;
