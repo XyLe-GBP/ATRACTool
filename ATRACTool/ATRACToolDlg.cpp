@@ -203,6 +203,8 @@ BOOL CATRACToolDlg::OnInitDialog()
 
 	CFileFind init;
 
+	SetWindowText(_T("ATRACTool [") + CURRENTTEXT + _T(", Feb. 14, 2021]"));
+
 	OutputDebugString(_T("Initializing...\n"));
 	if (init.FindFile(_T(".\\Resources\\at3tool.exe"))) {
 		if (init.FindFile(_T(".\\Resources\\at9tool.exe"))) {
@@ -286,7 +288,7 @@ void CATRACToolDlg::OnOpenFile()
 	CButton* BUTTON_ENCODE = (CButton*)GetDlgItem(IDC_BUTTON_ENCODE);
 	CButton* RADIO_AT3 = (CButton*)GetDlgItem(IDC_RADIO_AT3);
 	CButton* RADIO_AT9 = (CButton*)GetDlgItem(IDC_RADIO_AT9);
-	wchar_t Drive[10] = { NULL }, Dir[MAX_PATH] = { NULL }, Name[MAX_PATH] = { NULL }, Ext[MAX_PATH] = { NULL };
+	wchar_t Drive[10]{}, Dir[MAX_PATH]{}, Name[MAX_PATH]{}, Ext[MAX_PATH]{};
 	CString DRIVE, DIR, NAME, EXT, SIZE, AT3EXT = _T(".AT3"), AT9EXT = _T(".AT9"), WAVEEXT = _T(".WAV"), FLAG;
 	CString filter("Adaptive TRansform Acoustic Coding 3 (*.at3)|*.at3|Adaptive TRansform Acoustic Coding 9 (*.at9)|*.at9|Microsoft Wave サウンド (*.wav)|*.wav|サポートされているすべてのファイル (*.at3,*.at9,*.wav)|*.at3;*.at9;*.wav||");
 	CFileDialog selDlg(TRUE, NULL, NULL, OFN_HIDEREADONLY | OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST, filter);

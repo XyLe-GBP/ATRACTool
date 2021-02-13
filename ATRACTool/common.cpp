@@ -86,6 +86,11 @@ CString READ_TEXT() {
 	return FUNCTION;
 }
 
+CString CURRENT_VER() {
+	CString FUNCTION = AppCurrentVersionCheck();
+	return FUNCTION;
+}
+
 DWORD GetFileSizeStat(const wchar_t* fp) {
 	struct _stat st;
 	if (_wstat(fp, &st) != 0) {
@@ -180,7 +185,7 @@ CString AppUpdateCheck() {
 	DWORD StatusCode = sizeof(DWORD);
 	DWORD StatusCode_Size = sizeof(DWORD);
 	wchar_t Path[MAX_PATH + 1], Drive[10], Dir[MAX_PATH], Name[MAX_PATH], Ext[MAX_PATH];
-	wchar_t ptr[MAX_PATH] = { 0 };
+	wchar_t ptr[MAX_PATH]{};
 	TCHAR m_cPath[MAX_PATH + 1];
 
 	CString URL;

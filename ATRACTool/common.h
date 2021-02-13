@@ -16,6 +16,7 @@
 void LoadResources();
 CString DEF_TEXT();
 CString READ_TEXT();
+CString CURRENT_VER();
 DWORD GetFileSizeStat(const wchar_t* fp);
 BOOL DeleteDirectory(LPCTSTR lpPathName);
 bool checkExistenceOfFolder(const std::string folder_name);
