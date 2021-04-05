@@ -1,37 +1,46 @@
-## Welcome to GitHub Pages
+# ATRACTool
 
-You can use the [editor on GitHub](https://github.com/XyLe-GBP/ATRACTool/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+<p>Utility tool to convert Sony's ATRAC3/ATRAC3plus/ATRAC9(.AT3/.AT9) to Wave(.WAV) sound.</p>
+<p>Or convert Wave sound to Sony's ATRAC3/ATRAC3plus/ATRAC9.</p>
+<p>User interface functions are provided for SCEI ATRAC3plus Codec Tool (at3tool.exe) and SCEI ATRAC9 Codec Tool (at9tool.exe).</p>
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## Descriptions
 
-### Markdown
+<p>This tool uses a multi-threaded(/MT) build, so it can be launched without the Visual C++ redistribution package.</p>
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+---
 
-```markdown
-Syntax highlighted code block
+<p>The SCEI ATRAC3plus Codec TOOL(at3tool.exe) uses <code>MSVCR80.DLL</code>.</p>
+<p>If you get an error, please install the following package on your PC.</p>
 
-# Header 1
-## Header 2
-### Header 3
 
-- Bulleted
-- List
+[Microsoft Visual C++ 2005 SP1 Redistributable Package (x86)](http://www.microsoft.com/ja-jp/download/details.aspx?id=5638)
 
-1. Numbered
-2. List
+[Microsoft Visual C++ 2005 SP1 Redistributable Package (x64)](http://www.microsoft.com/ja-jp/download/details.aspx?id=18471)
 
-**Bold** and _Italic_ and `Code` text
+---
 
-[Link](url) and ![Image](src)
-```
+<p>The SCEI ATRAC9 Codec TOOL(at9tool.exe) uses <code>MSVCR90.DLL</code>.</p>
+<p>If you get an error, please install the following package on your PC.</p>
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 
-### Jekyll Themes
+[Microsoft Visual C++ 2008 Redistributable Package (x86)](http://www.microsoft.com/ja-jp/download/details.aspx?id=29)
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/XyLe-GBP/ATRACTool/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+[Microsoft Visual C++ 2008 Redistributable Package (x64)](http://www.microsoft.com/ja-jp/download/details.aspx?id=15336)
 
-### Support or Contact
+---
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+## What is this?
+
+<p>It is a tool that can decode Sony's ATRAC3/ATRAC3plus/ATRAC9 to Wave sound, and encode Wave sound to ATRAC3/ATRAC3plus/ATRAC9.</p>
+<p>ATRAC3 and ATRAC3plus are mainly used for PSP and PS3, while ATRAC9 is used for PSVita and PS4.</p>
+
+## System Requirements
+
+<p>This application does not work on non-x64 (64 bit) operating systems.</p>
+<p>※This application will not run on non-x64 (64-bit) operating systems. Please note that it cannot run on x86 (32-bit) PCs.</p>
+<p>(Unless you have a very old PC, you should be able to run it.)</p>
+
+## About Licensing
+
+This tool is released under the MIT license.
