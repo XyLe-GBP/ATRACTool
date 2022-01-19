@@ -1,8 +1,3 @@
----
-title: "ATRACTool-README"
-tags: ""
----
-
 # Important
 
 This application has been ported to .NET6.0.  
@@ -10,8 +5,6 @@ Therefore, this version will be unsupported in the near future.
 Please use the [ported version](https://github.com/XyLe-GBP/ATRACTool-Reloaded) in the future.  
 
 The port includes support for multiple languages, additional features and bug fixes.
-
----
 
 # ATRACTool
 
@@ -28,28 +21,26 @@ User interface functions are provided for SCEI ATRAC3plus Codec Tool (at3tool.ex
 [Release build](https://github.com/XyLe-GBP/ATRACTool/releases)
 
 ## Descriptions
----
 
 This tool uses a multi-threaded(/MT) build, so it can be launched without the Visual C++ redistribution package.
 
 - The SCEI ATRAC3plus Codec TOOL(at3tool.exe) uses <code>MSVCR80.DLL</code>.  
 
-If you get an error, please install the following package on your PC.
+ If you get an error, please install the following package on your PC.
 
-[Microsoft Visual C++ 2005 SP1 Redistributable Package (x86)](http://www.microsoft.com/ja-jp/download/details.aspx?id=5638)
+ [Microsoft Visual C++ 2005 SP1 Redistributable Package (x86)](http://www.microsoft.com/ja-jp/download/details.aspx?id=5638)
 
-[Microsoft Visual C++ 2005 SP1 Redistributable Package (x64)](http://www.microsoft.com/ja-jp/download/details.aspx?id=18471)
+ [Microsoft Visual C++ 2005 SP1 Redistributable Package (x64)](http://www.microsoft.com/ja-jp/download/details.aspx?id=18471)
 
 - The SCEI ATRAC9 Codec TOOL(at9tool.exe) uses <code>MSVCR90.DLL</code>.  
 
-If you get an error, please install the following package on your PC.
+ If you get an error, please install the following package on your PC.
 
-[Microsoft Visual C++ 2008 Redistributable Package (x86)](http://www.microsoft.com/ja-jp/download/details.aspx?id=29)
+ [Microsoft Visual C++ 2008 Redistributable Package (x86)](http://www.microsoft.com/ja-jp/download/details.aspx?id=29)
 
-[Microsoft Visual C++ 2008 Redistributable Package (x64)](http://www.microsoft.com/ja-jp/download/details.aspx?id=15336)
+ [Microsoft Visual C++ 2008 Redistributable Package (x64)](http://www.microsoft.com/ja-jp/download/details.aspx?id=15336)
 
 ## Details
----
 
 It is a tool that can decode Sony's ATRAC3/ATRAC3plus/ATRAC9 to Wave sound, and encode Wave sound to ATRAC3/ATRAC3plus/ATRAC9. 
 
@@ -64,6 +55,5 @@ This application does not work on non-x64 (64 bit) operating systems.
 (Unless you have a very old PC, you should be able to run it.)
 
 ## License
----
 
 MIT
