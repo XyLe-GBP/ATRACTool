@@ -1,10 +1,9 @@
 # Important
 
-This application has been ported to .NET6.0.  
-Therefore, this version will be unsupported in the near future.  
-Please use the [ported version](https://github.com/XyLe-GBP/ATRACTool-Reloaded) in the future.  
-
-The port includes support for multiple languages, additional features and bug fixes.
+## This project is no longer supported.  
+Please use the .NET ported version of [ATRACTool Reloaded](https://github.com/XyLe-GBP/ATRACTool-Reloaded) from now on.  
+The ported version includes multi-language support, additional functionality and bug fixes.  
+This version can still be used, but we are not responsible for any problems that may occur.  
 
 # ATRACTool
 
